@@ -1,0 +1,72 @@
+$primary-color: #f8f9fa;
+$bg-color: #007bff;
+$text-color: #333;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: $bg-color;
+  border-bottom: 2px solid darken($bg-color, 10%);
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: $primary-color;
+    cursor: pointer;
+  }
+
+  .search-bar {
+    width: 400px;
+    margin: 0 15px;
+    
+    input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+    }
+  }
+
+  .categories {
+    display: flex;
+    gap: 15px;
+
+    a {
+      text-decoration: none;
+      color: $text-color;
+      font-weight: 500;
+
+      &:hover {
+        color: $primary-color;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .profile {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-bar {
+    width: 100%;
+  }
+}
