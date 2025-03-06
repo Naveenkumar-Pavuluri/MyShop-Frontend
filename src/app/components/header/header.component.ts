@@ -18,7 +18,6 @@ export class HeaderComponent {
   ngOnInit(){
     this.categoryService.getCategories().subscribe((result)=>{
       this.category = result;
-      console.log(result);
     })
   }
 
