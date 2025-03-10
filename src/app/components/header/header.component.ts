@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
-import { CategoryService } from '../../services/category.service';
 import { Category } from '../../types/category';
 import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { CustomerService } from '../../services/customer.service';
 
 @Component({
   selector: 'app-header',
@@ -11,16 +12,21 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  categoryService = inject(CategoryService);
+  customerService = inject(CustomerService);
   category: Category[]=[];
-  router = inject(Router)
+  router = inject(Router);
+  authService = inject(AuthService);
+  searchTerm!:string;
 
   ngOnInit(){
-    this.categoryService.getCategories().subscribe((result)=>{
+    this.loadCategories();
+  }
+
+  loadCategories(){
+    this.customerService.getCategories().subscribe((result:any)=>{
       this.category = result;
     })
   }
-
   onSearch(e:any){
     if(e.target.value){
       this.router.navigateByUrl("/products?search="+e.target.value);
@@ -28,6 +34,12 @@ export class HeaderComponent {
   }
 
   searchCategory(id:string){
+    this.searchTerm="";
     this.router.navigateByUrl("/products?categoryId="+id!);
+  }
+
+  logout(){
+    this.authService.logout();
+    this.router.navigateByUrl("/login");
   }
 }

@@ -22,4 +22,41 @@ export class AuthService {
       email,password
     })
   }
+
+  get isLoggedIn(){
+    let token = localStorage.getItem("token");
+    if(token){
+      return true;
+    }
+    return false;
+  }
+
+  get isUserName(){
+    let userData = localStorage.getItem("user");
+    if(userData){
+      return JSON.parse(userData).name;
+    }
+    return null;
+  }
+
+  get userEmail(){
+    let userData = localStorage.getItem("user");
+    if(userData){
+      return JSON.parse(userData).email;
+    }
+    return null;
+  }
+
+  get isAdmin(){
+    let userData = localStorage.getItem("user");
+    if(userData){
+      return JSON.parse(userData).isAdmin;
+    }
+    return false;
+  }
+
+  logout(){
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+  }
 }

@@ -2,15 +2,29 @@
     <div class="logo" routerLink="/">MyShop</div>
 
     <div class="search-bar">
-        <input type="text" placeholder="Search..." (keyup.enter)="onSearch($event)">
+        <input type="text" placeholder="Search..."  (keyup.enter)="onSearch($event)">
     </div>
 
-    <nav class="categories">
-        @for(cats of category; track $index){
-            <a (click)="searchCategory(cats._id!)">{{cats.name}}</a>
-        }
-    </nav>
+    @if(authService.isLoggedIn){
+        <nav class="categories">
+            @for(cats of category; track $index){
+                <a (click)="searchCategory(cats._id!)">{{cats.name}}</a>
+            }
+        </nav>
+    }
 
-    <div class="profile">👤</div>
+    <div class="profile">
+        @if(authService.isAdmin){
+            <a routerLink="/admin">{{authService.isUserName}}</a>
+        }@else{
+            <a routerLink="/profile">{{authService.isUserName}}</a>
+        }
+        @if(authService.isLoggedIn){
+            <a (click)="logout()" class="cursor-pointer ml-2" >Logout</a>
+        }@else{
+            <a routerLink="/login" class="cursor-pointer ml-2" >LogIn</a>
+            <a routerLink="/register" class="cursor-pointer ml-2" >Register</a>
+        }
+    </div>
 
 </header>

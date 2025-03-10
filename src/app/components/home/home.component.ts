@@ -31,13 +31,11 @@ export class HomeComponent {
   ngOnInit(){
     this.customerService.getNewProducts().subscribe((result)=>{
       this.newProducts = result;
-      console.log(this.newProducts);
       this.bangerImages.push(...result)
     });
 
     this.customerService.getFeaturedProducts().subscribe((result)=>{
       this.featuredProducts = result;
-      console.log(this.featuredProducts);
       this.bangerImages.push(...result)
     })
   }
