@@ -1,1 +1,15 @@
-<p>product-list works!</p>
+<div class="flex px-10 py-2">
+    <div class="w-3/12">
+        <h6>Filters</h6>
+    </div>
+    <div class="flex-1">
+        <h6>Products</h6>
+        <div class="flex flex-wrap gap-2">
+            @for(product of products; track $index){
+                <app-product-card [product]="product"></app-product-card>
+            }@empty{
+                <h6>Noo Products to show in this category</h6>
+            }
+        </div>
+    </div>
+</div>

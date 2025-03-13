@@ -4,11 +4,12 @@ import { Product } from '../../types/product';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { ProductCardComponent } from '../product-card/product-card.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CarouselModule,RouterLink,MatButtonModule],
+  imports: [CarouselModule,RouterLink,MatButtonModule,ProductCardComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
