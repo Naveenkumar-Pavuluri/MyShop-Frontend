@@ -12,4 +12,7 @@ import { Product } from '../../types/product';
 })
 export class ProductCardComponent {
   @Input() product!:Product;
+  get sellingPrice(){
+    return Math.round(this.product.price - this.product.price * (this.product.discount/100));
+  }
 }

@@ -1,15 +1,49 @@
 <div class="flex px-10 py-2">
     <div class="w-3/12">
         <h6>Filters</h6>
+        <div class="flex flex-col px-6">
+            <div class="w-full p-2">
+                <mat-form-field class="w-full mb-4">
+                    <mat-label>Category</mat-label>
+                    <mat-select name="categoryId" [(ngModel)]="categoryId" (valueChange)="getAllProducts()">
+                        @for(category of category; track $index){
+                        <mat-option [value]="category._id">{{category.name}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="w-full mb-4">
+                    <mat-label>Brand</mat-label>
+                    <mat-select name="brandId" [(ngModel)]="brandId" (valueChange)="getAllProducts()">
+                        @for(brand of brands; track $index){
+                        <mat-option [value]="brand._id">{{brand.name}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
     </div>
     <div class="flex-1">
-        <h6>Products</h6>
+        <div class="flex justify-between">
+            <h6>Products</h6>
+            <mat-form-field class="w-40">
+                <mat-label>Order By</mat-label>
+                <mat-select  (valueChange)="orderChange($event)">
+                    <mat-option [value]="1">Price Low to High</mat-option>
+                    <mat-option [value]="-1">Price High to Low</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
         <div class="flex flex-wrap gap-2">
             @for(product of products; track $index){
-                <app-product-card [product]="product"></app-product-card>
+            <app-product-card [product]="product"></app-product-card>
             }@empty{
-                <h6>Noo Products to show in this category</h6>
+            <h6>Noo Products to show in this category</h6>
             }
+        </div>
+        <div class="flex gap-4">
+            <button mat-raised-button color="primary" [disabled]="page==1" (click)="pageChange(page-1)">Previous</button>
+            <button mat-raised-button color="primary" (click)="pageChange(page+1)" [disabled]="!isNext">Next</button>
         </div>
     </div>
 </div>
