@@ -20,6 +20,8 @@
             <a routerLink="/profile">{{authService.isUserName}}</a>
         }
         @if(authService.isLoggedIn){
+            <mat-icon class="text-red-500" routerLink="/wishlist">favorite_border</mat-icon>
+            <mat-icon class="text-white" routerLink="/cart">shopping_cart</mat-icon>
             <a (click)="logout()" class="cursor-pointer ml-2" >Logout</a>
         }@else{
             <a routerLink="/login" class="cursor-pointer ml-2" >LogIn</a>

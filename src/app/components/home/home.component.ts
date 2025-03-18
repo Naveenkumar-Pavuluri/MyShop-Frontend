@@ -5,6 +5,8 @@ import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { ProductCardComponent } from '../product-card/product-card.component';
+import { WishlistService } from '../../services/wishlist.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-home',
@@ -18,6 +20,8 @@ export class HomeComponent {
   newProducts:Product[]=[];
   featuredProducts:Product[]=[];
   bangerImages:Product[]=[]
+  wishlistService = inject(WishlistService);
+  cartService = inject(CartService);
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -26,8 +30,9 @@ export class HomeComponent {
     dots: false,
     navSpeed: 700,
     navText: ['', ''],
-    nav: true
-  }
+    nav: true,
+};
+
   
   ngOnInit(){
     this.customerService.getNewProducts().subscribe((result)=>{
@@ -38,6 +43,8 @@ export class HomeComponent {
     this.customerService.getFeaturedProducts().subscribe((result)=>{
       this.featuredProducts = result;
       this.bangerImages.push(...result)
-    })
+    });
+    this.wishlistService.init();
+    this.cartService.init();
   }
 }

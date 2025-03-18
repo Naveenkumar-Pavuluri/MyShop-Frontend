@@ -1,18 +1,49 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { Product } from '../../types/product';
+import { WishlistService } from '../../services/wishlist.service';
 
 @Component({
   selector: 'app-product-card',
   standalone: true,
-  imports: [RouterLink,MatButtonModule],
+  imports: [RouterLink,MatButtonModule,MatIconModule],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.scss'
 })
 export class ProductCardComponent {
   @Input() product!:Product;
+  wishlistService = inject(WishlistService);
+
   get sellingPrice(){
-    return Math.round(this.product.price - this.product.price * (this.product.discount/100));
+    return Math.floor(Math.round(this.product.price - this.product.price * (this.product.discount/100))/100)*100;
+  }
+
+  addToWishlist(product:Product){
+    if(this.isInWishlist(product)){
+      this.wishlistService.removeFromWishlist(product._id!).subscribe((result)=>{
+        this.wishlistService.init();
+      })
+    }else{
+      this.wishlistService.addToWishlist(product._id!).subscribe((result)=>{
+        this.wishlistService.init();
+      })
+    }
+  }
+
+  isInWishlist(product:Product){
+    let isExists = this.wishlistService.wishlist.find((x: any)=> x._id ==product._id);
+    console.log(isExists);
+    if(isExists) return true;
+    else return false;
+  }
+
+  addToCart(product:Product){
+    
+  }
+
+  isProductInCart(product:string){
+    
   }
 }

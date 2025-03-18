@@ -23,7 +23,7 @@ export class ProductFormComponent {
   formBuilder = inject(FormBuilder);
   productForm = this.formBuilder.group({
     name: [null, [Validators.required, Validators.minLength(5)]],
-    shortDescription: [null, [Validators.required, Validators.minLength(10)]],
+    shortDescription: [null, [Validators.required, Validators.minLength(10), Validators.maxLength(70)]],
     description: [null, [Validators.required, Validators.minLength(50)]],
     price: [null, [Validators.required]],
     discount: [],

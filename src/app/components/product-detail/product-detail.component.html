@@ -14,7 +14,19 @@
                 <span class="text-orange-400">{{product.discount}}% off</span>
                 <span class="text-green-500 font-bold">₹{{sellingPrice}}</span>
             </div>
-            <button mat-raised-button color="primary mt-4 mb-4" >Add to Cart</button>
+            <div class="flex gap-4 mt-3">
+                <button mat-fab color="warn" (click)="addToWishlist(product)">
+                    @if(isInWishlist(product)){
+                        <mat-icon class="text-red-500">favorite</mat-icon>
+                    }@else{
+                        <mat-icon class="text-red-500">favorite_border</mat-icon>
+                    }
+                </button>
+                <button mat-fab color="primary">
+                    <mat-icon>shopping_cart</mat-icon>
+                    <!-- <mat-icon>remove_shopping_cart</mat-icon> -->
+                </button>
+            </div>
             
             <h3 class="mt-6 text-xl font-semibold">Product Details</h3>
             <p>{{product.description}}</p>
