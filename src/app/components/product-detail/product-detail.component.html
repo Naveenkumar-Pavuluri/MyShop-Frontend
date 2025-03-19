@@ -22,9 +22,12 @@
                         <mat-icon class="text-red-500">favorite_border</mat-icon>
                     }
                 </button>
-                <button mat-fab color="primary">
-                    <mat-icon>shopping_cart</mat-icon>
-                    <!-- <mat-icon>remove_shopping_cart</mat-icon> -->
+                <button mat-fab color="primary" (click)="addToCart(product)">
+                    @if(isProductInCart(product._id!)){
+                        <mat-icon>remove_shopping_cart</mat-icon>
+                    }@else{
+                        <mat-icon>add_shopping_cart</mat-icon>
+                    }
                 </button>
             </div>
             

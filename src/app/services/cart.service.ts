@@ -24,10 +24,10 @@ export class CartService {
   }
 
   addToCart(id:string,quantity:number){
-    return this.http.post(environment.apiUrl+"/cusomter/cart/:"+id,{quantity})
+    return this.http.post(environment.apiUrl+"/customer/cart/"+id,{quantity:quantity})
   }
 
   removeFromCart(id:string){
-    return this.http.delete(environment.apiUrl+"/cusomter/cart/:"+id)
+    return this.http.delete(environment.apiUrl+"/customer/cart/"+id)
   }
 }

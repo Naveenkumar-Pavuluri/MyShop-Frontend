@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { Product } from '../../types/product';
 import { WishlistService } from '../../services/wishlist.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product-card',
@@ -15,6 +16,7 @@ import { WishlistService } from '../../services/wishlist.service';
 export class ProductCardComponent {
   @Input() product!:Product;
   wishlistService = inject(WishlistService);
+  cartService = inject(CartService)
 
   get sellingPrice(){
     return Math.floor(Math.round(this.product.price - this.product.price * (this.product.discount/100))/100)*100;
@@ -33,17 +35,26 @@ export class ProductCardComponent {
   }
 
   isInWishlist(product:Product){
-    let isExists = this.wishlistService.wishlist.find((x: any)=> x._id ==product._id);
-    console.log(isExists);
-    if(isExists) return true;
+    if(this.wishlistService.wishlist.find((x: any)=> x._id ==product._id)) return true;
     else return false;
   }
 
-  addToCart(product:Product){
-    
+  addToCart(productId:Product){
+    if(!this.isProductInCart(productId._id!)){
+      console.log(productId);
+      this.cartService.addToCart(productId._id!, 1).subscribe((result) =>{
+        this.cartService.init();
+      });
+    }else{
+      this.cartService.removeFromCart(productId._id!).subscribe((result) =>{
+        console.log("remove is clicked properly");
+        this.cartService.init();
+      });
+    }
   }
 
   isProductInCart(product:string){
-    
+    if(this.cartService.items.find(x => x.product._id==product))return true;
+    else return false;
   }
 }

@@ -6,6 +6,7 @@ import { Product } from '../../types/product';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { WishlistService } from '../../services/wishlist.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -21,7 +22,8 @@ export class ProductDetailComponent {
   route = inject(ActivatedRoute);
   mainImage!:string;
   productPrice!:number;
-  wishlistService = inject(WishlistService)
+  wishlistService = inject(WishlistService);
+  cartService = inject(CartService)
   ngOnInit(){
     const id = this.route.snapshot.params["id"];
     this.customerService.getProductsById(id).subscribe((result)=>{
@@ -50,6 +52,24 @@ export class ProductDetailComponent {
     let isExists = this.wishlistService.wishlist.find((x: any)=> x._id ==product._id);
     console.log(isExists);
     if(isExists) return true;
+    else return false;
+  }
+
+  addToCart(productId:Product){
+    if(!this.isProductInCart(productId._id!)){
+      console.log(productId);
+      this.cartService.addToCart(productId._id!, 1).subscribe((result) =>{
+        this.cartService.init();
+      });
+    }else{
+      this.cartService.removeFromCart(productId._id!).subscribe((result) =>{
+        this.cartService.init();
+      });
+    }
+  }
+
+  isProductInCart(product:string){
+    if(this.cartService.items.find(x => x.product._id==product))return true;
     else return false;
   }
 }
