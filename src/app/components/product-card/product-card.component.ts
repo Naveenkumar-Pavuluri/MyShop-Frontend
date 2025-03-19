@@ -41,13 +41,11 @@ export class ProductCardComponent {
 
   addToCart(productId:Product){
     if(!this.isProductInCart(productId._id!)){
-      console.log(productId);
       this.cartService.addToCart(productId._id!, 1).subscribe((result) =>{
         this.cartService.init();
       });
     }else{
       this.cartService.removeFromCart(productId._id!).subscribe((result) =>{
-        console.log("remove is clicked properly");
         this.cartService.init();
       });
     }

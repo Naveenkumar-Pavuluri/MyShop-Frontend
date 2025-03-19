@@ -50,14 +50,12 @@ export class ProductDetailComponent {
 
   isInWishlist(product:Product){
     let isExists = this.wishlistService.wishlist.find((x: any)=> x._id ==product._id);
-    console.log(isExists);
     if(isExists) return true;
     else return false;
   }
 
   addToCart(productId:Product){
     if(!this.isProductInCart(productId._id!)){
-      console.log(productId);
       this.cartService.addToCart(productId._id!, 1).subscribe((result) =>{
         this.cartService.init();
       });
