@@ -2,8 +2,9 @@
     <h2 class="text-2xl font-bold mb-4">My Orders list</h2>
     @for(order of orders; track $index){
     <div>
-        <h6>OrderId :{{order._id}}</h6>
-        <span>Date: {{order.date | date:'mediumDate'}}</span>
+        <h6>OrderId : {{order._id}}</h6>
+        <span>Date : {{order.date | date:'mediumDate'}}</span>
+        <p>Order Status : {{order.status}}</p>
     </div>
     <div *ngFor="let item of order.items; let i = index"
         class="flex items-center justify-between p-4 bg-white shadow-md rounded-lg mb-4">
