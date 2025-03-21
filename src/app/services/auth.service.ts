@@ -1,62 +1,71 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  private isLoggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn);
+  isLoggedIn$ = this.isLoggedInSubject.asObservable();
 
-  constructor() { }
+  constructor() {}
 
   http = inject(HttpClient);
 
-  register(name:string, email:string, password:string){
-    return this.http.post(environment.apiUrl+"/auth/register",{
-      name,email,password
-    })
+  register(name: string, email: string, password: string) {
+    return this.http.post(environment.apiUrl + '/auth/register', {
+      name,
+      email,
+      password,
+    });
   }
 
-  login( email:string, password:string){
-    return this.http.post(environment.apiUrl+"/auth/login",{
-      email,password
-    })
+  login(email: string, password: string) {
+    return this.http.post(environment.apiUrl + '/auth/login', {
+      email,
+      password,
+    });
   }
 
-  get isLoggedIn(){
-    let token = localStorage.getItem("token");
-    if(token){
-      return true;
-    }
-    return false;
+  get isLoggedIn(): boolean {
+    const token = localStorage.getItem('token');
+    return !!token;
   }
 
-  get isUserName(){
-    let userData = localStorage.getItem("user");
-    if(userData){
+  get isUserName() {
+    const userData = localStorage.getItem('user');
+    if (userData) {
       return JSON.parse(userData).name;
     }
     return null;
   }
 
-  get userEmail(){
-    let userData = localStorage.getItem("user");
-    if(userData){
+  get userEmail() {
+    const userData = localStorage.getItem('user');
+    if (userData) {
       return JSON.parse(userData).email;
     }
     return null;
   }
 
-  get isAdmin(){
-    let userData = localStorage.getItem("user");
-    if(userData){
+  get isAdmin() {
+    const userData = localStorage.getItem('user');
+    if (userData) {
       return JSON.parse(userData).isAdmin;
     }
     return false;
   }
 
-  logout(){
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.isLoggedInSubject.next(false); // Notify subscribers that the user has logged out
+  }
+
+  // Call this method after a successful login to update the state
+  notifyLogin() {
+    this.isLoggedInSubject.next(true);
   }
 }

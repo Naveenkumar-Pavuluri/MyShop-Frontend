@@ -1,12 +1,12 @@
-<div class="border-r-4 w-full shadow-lg cursor-pointer">
+<div class="border-r-4 w-full h-full shadow-lg cursor-pointer">
     <img [src]="product.images[0]" alt="Product Image" class="w-full h-52 object-cover" [routerLink]="'/products/'+product._id"/>
-    <div class="p-4">
+    <div class="p-4 flex flex-col justify-between">
         <h6 class="mb-2" [routerLink]="'/products/'+product._id">{{ product.name }}</h6>
         <p [routerLink]="'/products/'+product._id">
             {{ product.shortDescription }}
         </p>
         <div class="flex justify-between items-center">
-            <div class="flex gap-1">
+            <div class="flex gap-2">
                 <span class="text-gray-400"><s>₹{{product.price}}</s></span>
                 <span class="text-orange-400">{{product.discount}}% off</span>
                 <span class="text-green-500 font-bold">₹{{sellingPrice}}</span>
