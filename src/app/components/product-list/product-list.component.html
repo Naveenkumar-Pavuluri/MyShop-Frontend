@@ -1,8 +1,9 @@
-<div class="flex px-10 py-2">
-    <div class="w-3/12">
-        <h6>Filters</h6>
-        <div class="flex flex-col px-6">
-            <div class="w-full p-2">
+<div class="flex flex-col sm:flex-row px-4 py-2">
+    <!-- Filters Section -->
+    <div class="w-full sm:w-3/12 bg-gray-100 p-4 rounded-lg">
+        <h6 class="text-lg font-semibold mb-2">Filters</h6>
+        <div class="flex flex-col">
+            <div class="w-full">
                 <mat-form-field class="w-full mb-4">
                     <mat-label>Category</mat-label>
                     <mat-select name="categoryId" [(ngModel)]="categoryId" (valueChange)="getAllProducts()">
@@ -23,27 +24,37 @@
             </div>
         </div>
     </div>
-    <div class="flex-1">
-        <div class="flex justify-between">
-            <h6>Products</h6>
+
+    <!-- Products Section -->
+    <div class="flex-1 mt-4 sm:mt-0 sm:ml-4">
+        <div class="flex flex-col sm:flex-row justify-between items-center">
+            <h6 class="text-lg font-semibold">Products</h6>
             <mat-form-field class="w-40">
                 <mat-label>Order By</mat-label>
-                <mat-select  (valueChange)="orderChange($event)">
+                <mat-select (valueChange)="orderChange($event)">
                     <mat-option [value]="1">Price Low to High</mat-option>
                     <mat-option [value]="-1">Price High to Low</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
-        <div class="flex flex-wrap gap-2">
+
+        <!-- Responsive Product Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
             @for(product of products; track $index){
             <app-product-card [product]="product"></app-product-card>
             }@empty{
-            <h6>Noo Products to show in this category</h6>
+            <h6 class="text-center col-span-full">No Products to show in this category</h6>
             }
         </div>
-        <div class="flex gap-4 mt-4">
-            <button mat-raised-button color="primary" [disabled]="page==1" (click)="pageChange(page-1)">Previous</button>
-            <button mat-raised-button color="primary" (click)="pageChange(page+1)" [disabled]="!isNext">Next</button>
+
+        <!-- Pagination Buttons -->
+        <div class="flex justify-center sm:justify-start gap-4 mt-6">
+            <button mat-raised-button color="primary" [disabled]="page==1" (click)="pageChange(page-1)">
+                Previous
+            </button>
+            <button mat-raised-button color="primary" (click)="pageChange(page+1)" [disabled]="!isNext">
+                Next
+            </button>
         </div>
     </div>
 </div>

@@ -1,28 +1,28 @@
-<div class="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+<div class="max-w-6xl mx-auto bg-white p-4 sm:p-6 rounded-lg shadow-lg">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-            <div class="flex space-x-2 mt-4">
-                <img [src]="mainImage">
-            </div>
+        <div class="flex justify-center">
+            <img [src]="mainImage" class="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-auto object-contain">
         </div>
-        
+
         <div *ngIf="product">
-            <h2 >{{product.name}}</h2>
-            <p class="text-lg text-gray-600 mt-2">{{product.shortDescription}}</p>
-            <div class="flex gap-4">
-                <span class="text-gray-400"><s>₹{{product.price}}</s></span>
-                <span class="text-orange-400">{{product.discount}}% off</span>
-                <span class="text-green-500 font-bold">₹{{sellingPrice}}</span>
+            <h2 class="text-lg sm:text-xl md:text-2xl font-bold">{{product.name}}</h2>
+            <p class="text-sm sm:text-base text-gray-600 mt-2">{{product.shortDescription}}</p>
+
+            <div class="flex flex-wrap gap-2 sm:gap-4 mt-2">
+                <span class="text-gray-400 text-sm sm:text-base"><s>₹{{product.price}}</s></span>
+                <span class="text-orange-400 text-sm sm:text-base">{{product.discount}}% off</span>
+                <span class="text-green-500 font-bold text-lg sm:text-xl">₹{{sellingPrice}}</span>
             </div>
-            <div class="flex gap-4 mt-3">
-                <button mat-fab color="warn" (click)="addToWishlist(product)">
+
+            <div class="flex gap-4 mt-4">
+                <button mat-fab color="warn" class="w-10 h-10 sm:w-12 sm:h-12" (click)="addToWishlist(product)">
                     @if(isInWishlist(product)){
                         <mat-icon class="text-red-500">favorite</mat-icon>
                     }@else{
                         <mat-icon class="text-red-500">favorite_border</mat-icon>
                     }
                 </button>
-                <button mat-fab color="primary" (click)="addToCart(product)">
+                <button mat-fab color="primary" class="w-10 h-10 sm:w-12 sm:h-12" (click)="addToCart(product)">
                     @if(isProductInCart(product._id!)){
                         <mat-icon>remove_shopping_cart</mat-icon>
                     }@else{
@@ -30,23 +30,24 @@
                     }
                 </button>
             </div>
-            
-            <h3 class="mt-6 text-xl font-semibold">Product Details</h3>
-            <p>{{product.description}}</p>
+
+            <h3 class="mt-6 text-lg sm:text-xl font-semibold">Product Details</h3>
+            <p class="text-sm sm:text-base">{{product.description}}</p>
         </div>
     </div>
+
     <div class="mt-8">
-        <h3 class="text-2xl font-semibold">Customer Reviews</h3>
+        <h3 class="text-xl sm:text-2xl font-semibold">Customer Reviews</h3>
         <div class="mt-4 border-t pt-4">
             <div class="mb-4">
-                <p class="font-bold">John Doe</p>
-                <p class="text-yellow-500">★★★★★</p>
-                <p class="text-gray-600">Great product! Highly recommend.</p>
+                <p class="font-bold text-sm sm:text-base">John Doe</p>
+                <p class="text-yellow-500 text-sm sm:text-base">★★★★★</p>
+                <p class="text-gray-600 text-xs sm:text-sm">Great product! Highly recommend.</p>
             </div>
             <div>
-                <p class="font-bold">Jane Smith</p>
-                <p class="text-yellow-500">★★★★☆</p>
-                <p class="text-gray-600">Good quality but a bit expensive.</p>
+                <p class="font-bold text-sm sm:text-base">Jane Smith</p>
+                <p class="text-yellow-500 text-sm sm:text-base">★★★★☆</p>
+                <p class="text-gray-600 text-xs sm:text-sm">Good quality but a bit expensive.</p>
             </div>
         </div>
     </div>

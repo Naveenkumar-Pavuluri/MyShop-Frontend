@@ -1,35 +1,42 @@
-<header class="header">
-    <div class="logo" routerLink="/">MyShop</div>
+<header class="bg-blue-500 text-white p-4 border-b-2 border-blue-700">
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 max-w-7xl mx-auto mb-2">
 
-    <div class="search-bar">
-        <input type="text" placeholder="Search..." [(ngModel)]="searchTerm" (keyup.enter)="onSearch($event)">
-    </div>
+        <div class="text-2xl font-bold cursor-pointer sm:self-start" routerLink="/">
+            MyShop
+        </div>
 
-    @if(authService.isLoggedIn){
-        <nav class="categories">
-            @for(cats of categoryList; track $index){
-                <a (click)="searchCategory(cats._id!)">{{cats.name}}</a>
-            }
-        </nav>
-    }
+        <div class="w-full sm:w-96">
+            <input type="text" class="w-full p-2 border border-gray-300 rounded-md text-black outline-none"
+                placeholder="Search..." [(ngModel)]="searchTerm" (keyup.enter)="onSearch($event)">
+        </div>
 
-    <div class="profile">
-        @if(authService.isAdmin){
+        <div class="flex gap-4 items-center">
+            @if(authService.isAdmin){
             <a routerLink="/admin">{{authService.isUserName}}</a>
-        }@else{
+            }@else{
             <a routerLink="/profile">{{authService.isUserName}}</a>
-        }
-        @if(authService.isLoggedIn){
-            @if(!authService.isAdmin){
-                <mat-icon class="text-red-500" routerLink="/wishlist" class="cursor-pointer ml-2">favorite_border</mat-icon>
-                <mat-icon class="text-white" routerLink="/cart" class="cursor-pointer ml-2">shopping_cart</mat-icon>
-                <button routerLink="/orders">Orders</button>
             }
-            <a (click)="logout()" class="cursor-pointer ml-2" >Logout</a>
-        }@else{
-            <a routerLink="/login" class="cursor-pointer ml-2" >LogIn</a>
-            <a routerLink="/register" class="cursor-pointer ml-2" >Register</a>
+
+            @if(authService.isLoggedIn){
+            @if(!authService.isAdmin){
+            <mat-icon class="text-red-500 cursor-pointer" routerLink="/wishlist">favorite_border</mat-icon>
+            <mat-icon class="text-white cursor-pointer" routerLink="/cart">shopping_cart</mat-icon>
+            <button routerLink="/orders" class="bg-white text-blue-500 px-3 py-1 rounded-md">Orders</button>
+            }
+            <a (click)="logout()" class="cursor-pointer text-red-400">Logout</a>
+            }@else{
+            <a routerLink="/login" class="cursor-pointer">LogIn</a>
+            <a routerLink="/register" class="cursor-pointer">Register</a>
+            }
+        </div>
+    </div>
+    <div class="flex flex-col gap-4">
+        @if(authService.isLoggedIn){
+            <div class="flex flex-col sm:flex-row gap-4 cursor-pointer">
+                @for(cats of categoryList; track $index){
+                    <a (click)="searchCategory(cats._id!)">{{cats.name}}</a>
+                }
+            </div>
         }
     </div>
-
 </header>

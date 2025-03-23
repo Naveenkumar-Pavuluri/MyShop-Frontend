@@ -1,24 +1,35 @@
-<div class="border-r-4 w-full h-full shadow-lg cursor-pointer">
-    <img [src]="product.images[0]" alt="Product Image" class="w-full h-52 object-cover" [routerLink]="'/products/'+product._id"/>
-    <div class="p-4 flex flex-col justify-between">
-        <h6 class="mb-2" [routerLink]="'/products/'+product._id">{{ product.name }}</h6>
-        <p [routerLink]="'/products/'+product._id">
+<div class="w-full h-full border border-gray-200 rounded-lg shadow-xl hover:scale-105 transition-transform cursor-pointer flex flex-col gap-6">
+    <img [src]="product.images[0]" alt="Product Image" 
+        class="w-full h-52 object-cover rounded-t-lg"
+        [routerLink]="'/products/'+product._id"/>
+
+    <div class="p-4 flex flex-col flex-grow">
+        <h6 class="text-lg font-semibold hover:text-blue-500 transition-colors"
+            [routerLink]="'/products/'+product._id">
+            {{ product.name }}
+        </h6>
+
+        <p class="text-gray-600 text-sm flex-grow"
+            [routerLink]="'/products/'+product._id">
             {{ product.shortDescription }}
         </p>
-        <div class="flex justify-between items-center">
-            <div class="flex gap-2">
-                <span class="text-gray-400"><s>₹{{product.price}}</s></span>
-                <span class="text-orange-400">{{product.discount}}% off</span>
-                <span class="text-green-500 font-bold">₹{{sellingPrice}}</span>
-            </div>
-            <button mat-fab color="warn" (click)="addToWishlist(product)">
+
+        <div class="flex justify-between items-center text-sm font-medium mt-2">
+            <span class="text-gray-400"><s>₹{{product.price}}</s></span>
+            <span class="text-orange-500">{{product.discount}}% off</span>
+            <span class="text-green-600 font-bold text-lg">₹{{sellingPrice}}</span>
+        </div>
+
+        <div class="flex justify-between items-center mt-auto pt-3">
+            <button mat-fab color="warn" (click)="addToWishlist(product)" class="w-10 h-10 flex items-center justify-center">
                 @if(isInWishlist(product)){
                     <mat-icon class="text-red-500">favorite</mat-icon>
                 }@else{
-                    <mat-icon class="text-red-500">favorite_border</mat-icon>
+                    <mat-icon class="text-gray-500 hover:text-red-500 transition-colors">favorite_border</mat-icon>
                 }
             </button>
-            <button mat-fab color="primary" (click)="addToCart(product)">
+
+            <button mat-fab color="primary" (click)="addToCart(product)" class="w-10 h-10 flex items-center justify-center">
                 @if(isProductInCart(product._id!)){
                     <mat-icon>remove_shopping_cart</mat-icon>
                 }@else{

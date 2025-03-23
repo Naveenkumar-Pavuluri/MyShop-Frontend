@@ -1,29 +1,30 @@
 @if(orderNumber == 0){
-<div class="container mx-auto p-6 max-w-3xl">
-    <h2 class="text-2xl font-bold mb-4">Shopping Cart</h2>
+<div class="container mx-auto p-6 max-w-3xl sm:max-w-xl md:max-w-2xl lg:max-w-3xl">
+    <h2 class="text-2xl font-bold mb-4 text-center">Shopping Cart</h2>
     <div *ngIf="cart.length > 0; else emptyCart">
         <div *ngFor="let item of cart; let i = index"
-            class="flex items-center justify-between p-4 bg-white shadow-md rounded-lg mb-4">
-            <div class="flex items-center gap-4">
+            class="flex flex-col sm:flex-row items-center justify-between p-4 bg-white shadow-md rounded-lg mb-4">
+            <div class="flex items-center gap-4 w-full sm:w-auto">
                 <img [src]="item.product.images[0]" alt="{{ item.product.name }}"
-                    class="w-16 h-16 rounded-lg object-cover" />
+                    class="w-20 h-20 sm:w-16 sm:h-16 rounded-lg object-cover" />
                 <div>
-                    <h6>{{item.product.name}}</h6>
+                    <h6 class="text-lg font-semibold">{{item.product.name}}</h6>
                     <p class="text-gray-500">₹{{sellingPrice(item.product.price,item.product.discount) * item.quantity}}
                     </p>
                 </div>
             </div>
-            <div class="flex items-center gap-2">
-                <span class="font-small"> Quantity:</span>
+            <div class="flex items-center gap-2 mt-2 sm:mt-0">
+                <span class="text-sm">Quantity:</span>
                 <button class="px-2 py-1 bg-gray-200 rounded" (click)="addToCart(item.product._id!,-1)">-</button>
                 <span class="font-medium">{{item.quantity}}</span>
                 <button class="px-2 py-1 bg-gray-200 rounded" (click)="addToCart(item.product._id!,1)">+</button>
             </div>
-            <button class="text-red-500" (click)="removeFromCart(item.product._id!)">Remove</button>
+            <button class="text-red-500 mt-2 sm:mt-0" (click)="removeFromCart(item.product._id!)">Remove</button>
         </div>
-        <div class="flex items-end justify-end font-bold text-2xl mt-4">
+        <div class="flex flex-col sm:flex-row items-center justify-between font-bold text-xl mt-4">
             <span class="mr-3">Total: ₹{{total}}</span>
-            <button mat-flat-button (click)="checkout()">Checkout</button>
+            <button mat-flat-button class="bg-blue-500 text-white px-4 py-2 rounded-lg mt-2 sm:mt-0"
+                (click)="checkout()">Checkout</button>
         </div>
     </div>
     <ng-template #emptyCart>
@@ -31,47 +32,42 @@
     </ng-template>
 </div>
 }@else if(orderNumber == 1){
-<div class="container mx-auto p-6 max-w-3xl">
-    <h2 class="text-2xl font-bold mb-4">Your Address Page</h2>
-    <form [formGroup]="addressForm">
-        <div class="mb-4">
-            <mat-form-field class="w-full">
-                <mat-label>Address 1 </mat-label>
-                <input matInput type="text" formControlName="address1" placeholder="address1">
-            </mat-form-field>
-        </div>
-        <div class="mb-4">
-            <mat-form-field class="w-full">
-                <mat-label>Address 2 </mat-label>
-                <input matInput type="text" formControlName="address2" placeholder="address2">
-            </mat-form-field>
-        </div>
-        <div class="mb-4">
-            <mat-form-field class="w-full">
-                <mat-label>City </mat-label>
-                <input matInput type="text" formControlName="city" placeholder="city">
-            </mat-form-field>
-        </div>
-        <div class="mb-4">
-            <mat-form-field class="w-full">
-                <mat-label>Pincode </mat-label>
-                <input matInput type="number" formControlName="pincode" placeholder="pincode">
-            </mat-form-field>
-        </div>
-        <button mat-raised-button (click)="addAddress()">
+<div class="container mx-auto p-6 max-w-3xl sm:max-w-xl md:max-w-2xl lg:max-w-3xl">
+    <h2 class="text-2xl font-bold mb-4 text-center">Your Address Page</h2>
+    <form [formGroup]="addressForm" class="space-y-4">
+        <mat-form-field class="w-full">
+            <mat-label>Address 1</mat-label>
+            <input matInput type="text" formControlName="address1" placeholder="Address 1">
+        </mat-form-field>
+        <mat-form-field class="w-full">
+            <mat-label>Address 2</mat-label>
+            <input matInput type="text" formControlName="address2" placeholder="Address 2">
+        </mat-form-field>
+        <mat-form-field class="w-full">
+            <mat-label>City</mat-label>
+            <input matInput type="text" formControlName="city" placeholder="City">
+        </mat-form-field>
+        <mat-form-field class="w-full">
+            <mat-label>Pincode</mat-label>
+            <input matInput type="number" formControlName="pincode" placeholder="Pincode">
+        </mat-form-field>
+        <button mat-raised-button class="bg-green-500 text-white px-4 py-2 rounded-lg w-full sm:w-auto"
+            (click)="addAddress()">
             Continue
         </button>
     </form>
 </div>
 }@else if(orderNumber == 2){
-<div class="container mx-auto p-6 max-w-3xl">
-    <h2 class="text-2xl font-bold mb-4">Payment Type</h2>
-    <mat-radio-group [(ngModel)]="paymentType">
-        <mat-radio-button value="cash">Cash</mat-radio-button>
-        <mat-radio-button value="card" [disabled]="true">Card</mat-radio-button>
-    </mat-radio-group>
-    <button mat-raised-button class="ml-4" (click)="completeOrder()">
-        Complete
-    </button>
+<div class="container mx-auto p-6 max-w-3xl sm:max-w-xl md:max-w-2xl lg:max-w-3xl">
+    <h2 class="text-2xl font-bold mb-4 text-center">Payment Type</h2>
+    <div class="flex flex-col sm:flex-row items-center gap-4">
+        <mat-radio-group [(ngModel)]="paymentType">
+            <mat-radio-button value="cash">Cash</mat-radio-button>
+            <mat-radio-button value="card" [disabled]="true">Card</mat-radio-button>
+        </mat-radio-group>
+        <button mat-raised-button class="bg-blue-500 text-white px-4 py-2 rounded-lg" (click)="completeOrder()">
+            Complete
+        </button>
+    </div>
 </div>
 }
