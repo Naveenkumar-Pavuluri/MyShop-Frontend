@@ -1,27 +1,108 @@
-# Webapp
+# 🛍️ MyShop — Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.9.
+A modern, responsive e-commerce web application built with **Angular**. Browse products across multiple categories, manage your cart and wishlist, and place orders — all with a clean and intuitive UI.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🖥️ Live Preview
 
-## Code scaffolding
+> Run locally at `http://localhost:4200`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+![MyShop Screenshot](https://github.com/Naveenkumar-Pavuluri/MyShop-Frontend/blob/main/public/assets/home-page.png)
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## ✨ Features
 
-## Running unit tests
+- 🔐 **Authentication** — Login / Logout with session-based user display
+- 🔍 **Search** — Search bar in the navbar for quick product lookup
+- 🛒 **Shopping Cart** — Add, remove, and manage cart items
+- ❤️ **Wishlist** — Save products for later
+- 📦 **Orders** — View your past and current orders
+- 🗂️ **Category Navigation** — Browse by Mobiles, Electronics, Home & Furniture, Fashion, Grocery, Books
+- 🎠 **Product Carousel** — Featured products slider on the homepage
+- 🆕 **New Products Section** — Highlighted latest arrivals with images and descriptions
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
 
-## Running end-to-end tests
+## 🛠️ Tech Stack
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+| Tech | Purpose |
+|------|---------|
+| Angular | Frontend framework |
+| TypeScript | Language |
+| HTML5 / CSS3 | Markup & styling |
+| Angular Router | Client-side routing |
+| HttpClient | API communication with backend |
 
-## Further help
+---
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v18+)
+- Angular CLI
+
+```bash
+npm install -g @angular/cli
+```
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/myshop-frontend.git
+cd myshop-frontend
+
+# Install dependencies
+npm install
+
+# Start the development server
+ng serve
+```
+
+The app will be available at `http://localhost:4200`.
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── app/
+│   ├── components/       # Reusable UI components (navbar, product card, carousel)
+│   ├── pages/            # Route-level pages (home, product, cart, orders)
+│   ├── services/         # API services (auth, products, cart, orders)
+│   ├── models/           # TypeScript interfaces/models
+│   └── app-routing.module.ts
+├── assets/               # Static assets
+└── environments/         # Environment config (API base URL etc.)
+```
+
+---
+
+## 🔗 Backend
+
+This frontend connects to the **MyShop Backend** REST API.
+Make sure the backend server is running before starting the frontend.
+
+👉 [MyShop Backend Repository](https://github.com/your-username/myshop-backend)
+
+Default API base URL: `http://localhost:3000` (configurable in `src/environments/environment.ts`)
+
+---
+
+## 📸 Screenshots
+
+| Homepage | Product Carousel |
+|----------|-----------------|
+| ![home](https://github.com/Naveenkumar-Pavuluri/MyShop-Frontend/blob/main/public/assets/home-page.png) | ![carousel](https://github.com/Naveenkumar-Pavuluri/MyShop-Frontend/blob/main/public/assets/carousel.png) |
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to change.
+
+---
