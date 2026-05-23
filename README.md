@@ -1,6 +1,6 @@
 # 🛍️ MyShop — Frontend
 
-A modern, responsive e-commerce web application built with **Angular**. Browse products across multiple categories, manage your cart and wishlist, and place orders — all with a clean and intuitive UI.
+A modern, responsive e-commerce web application built with **Angular** and **Tailwind CSS**. Browse products across multiple categories, manage your cart and wishlist, and place orders — all with a clean and intuitive UI.
 
 ---
 
@@ -31,7 +31,8 @@ A modern, responsive e-commerce web application built with **Angular**. Browse p
 |------|---------|
 | Angular | Frontend framework |
 | TypeScript | Language |
-| HTML5 / CSS3 | Markup & styling |
+| Tailwind CSS | Utility-first styling |
+| SCSS | Component-level custom styles |
 | Angular Router | Client-side routing |
 | HttpClient | API communication with backend |
 
@@ -52,8 +53,8 @@ npm install -g @angular/cli
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/myshop-frontend.git
-cd myshop-frontend
+git clone https://github.com/Naveenkumar-Pavuluri/MyShop-Frontend.git
+cd MyShop-Frontend
 
 # Install dependencies
 npm install
@@ -69,15 +70,35 @@ The app will be available at `http://localhost:4200`.
 ## 📁 Project Structure
 
 ```
-src/
-├── app/
-│   ├── components/       # Reusable UI components (navbar, product card, carousel)
-│   ├── pages/            # Route-level pages (home, product, cart, orders)
-│   ├── services/         # API services (auth, products, cart, orders)
-│   ├── models/           # TypeScript interfaces/models
-│   └── app-routing.module.ts
-├── assets/               # Static assets
-└── environments/         # Environment config (API base URL etc.)
+FRONTEND/
+├── public/
+│   └── assets/               # Static assets (images, icons)
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   │   ├── customer-orders/
+│   │   │   ├── customer-profile/
+│   │   │   ├── footer/
+│   │   │   ├── header/
+│   │   │   ├── home/
+│   │   │   ├── login/
+│   │   │   ├── manage/
+│   │   │   ├── product-card/
+│   │   │   ├── product-detail/
+│   │   │   ├── product-list/
+│   │   │   ├── register/
+│   │   │   ├── shopping-cart/
+│   │   │   └── wishlist/
+│   │   ├── core/             # Guards, interceptors
+│   │   ├── services/         # API services (auth, products, cart, orders)
+│   │   ├── types/            # TypeScript interfaces/models
+│   │   ├── app.component.ts
+│   │   ├── app.config.ts
+│   │   └── app.routes.ts
+│   ├── environments/
+│   │   ├── environment.ts
+│   │   └── environment.development.ts
+│   └── index.html
 ```
 
 ---
@@ -106,3 +127,7 @@ Default API base URL: `http://localhost:3000` (configurable in `src/environments
 Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to change.
 
 ---
+
+## 📄 License
+
+[MIT](./LICENSE)
