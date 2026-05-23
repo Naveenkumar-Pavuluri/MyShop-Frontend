@@ -24,8 +24,8 @@ export class OrdersComponent {
     return Math.floor(Math.round(price - price * (discount / 100)) / 100) * 100;
   }
 
-  updateStatus(status:any,order:Order){
-    this.orderService.updateOrders(order._id!,status.value).subscribe((result)=>{
+  updateStatus(status: any, order: Order) {
+    this.orderService.updateOrders(order._id!, status.value).subscribe((result) => {
       alert("Order Updated Successfully")
       console.log(order);
     })

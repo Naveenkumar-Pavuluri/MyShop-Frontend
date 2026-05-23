@@ -24,7 +24,7 @@ export class BrandsComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  id!:string;
+  id!: string;
 
   brandService = inject(BrandService);
 
@@ -32,7 +32,7 @@ export class BrandsComponent {
     this.dataSource = new MatTableDataSource([] as any);
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.getServerData();
   }
 
@@ -56,8 +56,8 @@ export class BrandsComponent {
     }
   }
 
-  delete(id:string){
-    this.brandService.deleteBrandById(id).subscribe((result)=>{
+  delete(id: string) {
+    this.brandService.deleteBrandById(id).subscribe((result) => {
       alert("Brand Deleted.");
       this.getServerData();
     })

@@ -3,13 +3,13 @@ import { AuthService } from "../services/auth.service";
 import { inject } from "@angular/core";
 
 
-export const authGaurd:CanActivateFn=(route,state)=>{
+export const authGaurd: CanActivateFn = (route, state) => {
     const authService = inject(AuthService);
     const router = inject(Router);
 
-    if(authService.isLoggedIn){
+    if (authService.isLoggedIn) {
         return true;
-    }else{
+    } else {
         router.navigateByUrl("/login");
         return false;
     }

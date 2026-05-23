@@ -1,11 +1,11 @@
 <div class="px-20 mt-10">
-    <div class="shadow h-45 flex items-center justify-center">
+    <div class="flex items-center justify-center shadow h-45">
         <owl-carousel-o [options]="customOptions" class="w-full">
             @for(items of bangerImages; track $index){
             <ng-template carouselSlide>
                 <div class="relative flex flex-col items-center" [routerLink]="'products/'+items._id">
-                    <img [src]="items.images[0]" alt="images" class="h-36 w-auto object-contain">
-                    <span class="text-sm mt-2">{{items.name}}</span>
+                    <img [src]="items.images[0]" alt="images" class="object-contain w-auto h-36">
+                    <span class="mt-2 text-sm">{{items.name}}</span>
                 </div>
             </ng-template>
             }
@@ -13,7 +13,7 @@
     </div>
     <div class="mt-4 mb-4">
         <h4 class="text-2xl font-bold">New Products</h4>
-        <div class="flex flex-wrap gap-14 justify-between h-full">
+        <div class="flex flex-wrap justify-between h-full gap-14">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-6">
                 @for (product of newProducts; track $index) {
                 <app-product-card [product]="product"></app-product-card>
@@ -23,7 +23,7 @@
     </div>
     <div class="mt-4 mb-4">
         <h4 class="text-2xl font-bold">Featured Products</h4>
-        <div class="flex flex-wrap gap-14 justify-between h-full">
+        <div class="flex flex-wrap justify-between h-full gap-14">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-6">
                 @for (product of featuredProducts; track $index) {
                 <app-product-card [product]="product"></app-product-card>

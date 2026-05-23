@@ -14,32 +14,32 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CategoryFormComponent {
 
-  name!:string;
+  name!: string;
   categoryService = inject(CategoryService);
   router = inject(Router);
   route = inject(ActivatedRoute);
-  isEdit:boolean = false;
-  id!:string;
-  ngOnInit(){
-    this.id =  this.route.snapshot.params["id"];
-    if(this.id){
+  isEdit: boolean = false;
+  id!: string;
+  ngOnInit() {
+    this.id = this.route.snapshot.params["id"];
+    if (this.id) {
       this.isEdit = true;
-      this.categoryService.getCategoryById(this.id).subscribe((result:any)=>{
+      this.categoryService.getCategoryById(this.id).subscribe((result: any) => {
         this.name = result.name;
       })
     }
   }
-  add(){
-    this.categoryService.addCategories(this.name).subscribe((result:any)=>{
-        alert("Category added succesfully");
-        this.router.navigateByUrl("admin/categories");
+  add() {
+    this.categoryService.addCategories(this.name).subscribe((result: any) => {
+      alert("Category added succesfully");
+      this.router.navigateByUrl("admin/categories");
     })
   }
 
-  update(){
-    this.categoryService.updateCategoryById(this.id,this.name).subscribe((result:any)=>{
+  update() {
+    this.categoryService.updateCategoryById(this.id, this.name).subscribe((result: any) => {
       alert("Category updated succesfully");
       this.router.navigateByUrl("admin/categories");
-  })
+    })
   }
 }

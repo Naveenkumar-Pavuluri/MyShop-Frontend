@@ -8,8 +8,10 @@
                     <input matInput type="text" [(ngModel)]="name" name="name" />
                 </mat-form-field>
             </div>
-            <div class="w-full flex justify-center">
-                @if(isEdit){<button mat-raised-button color="primary" [disabled]="!name" (click)="update()">Update</button>}@else{<button mat-raised-button color="primary" [disabled]="!name" (click)="add()">Add</button>}
+            <div class="flex justify-center w-full">
+                @if(isEdit){<button mat-raised-button color="primary" [disabled]="!name"
+                    (click)="update()">Update</button>}@else{<button mat-raised-button color="primary"
+                    [disabled]="!name" (click)="add()">Add</button>}
             </div>
         </div>
     </form>

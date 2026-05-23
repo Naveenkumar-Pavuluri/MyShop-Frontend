@@ -24,11 +24,11 @@ export class ProductService {
     return this.http.post(environment.apiUrl + "/product/", model);
   }
 
-  updateProductById(id: string, model:string) {
-    return this.http.put(environment.apiUrl + "/product/"+ id, model)
+  updateProductById(id: string, model: string) {
+    return this.http.put(environment.apiUrl + "/product/" + id, model)
   }
 
   deleteProduct(id: string) {
-    return this.http.delete(environment.apiUrl + "/product/"+ id);
+    return this.http.delete(environment.apiUrl + "/product/" + id);
   }
 }

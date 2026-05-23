@@ -9,5 +9,5 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './customer-profile.component.scss'
 })
 export class CustomerProfileComponent {
-  authService=inject(AuthService)
+  authService = inject(AuthService)
 }

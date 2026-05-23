@@ -8,25 +8,25 @@ import { Order } from '../types/order';
 })
 export class OrderService {
 
-  http= inject(HttpClient);
+  http = inject(HttpClient);
   constructor() { }
 
-  addOrder(order:Order){
-    return this.http.post(environment.apiUrl+"/customer/order",order);
+  addOrder(order: Order) {
+    return this.http.post(environment.apiUrl + "/customer/order", order);
   }
 
-  getOrders(){
-    return this.http.get<Order[]>(environment.apiUrl+"/customer/order");
+  getOrders() {
+    return this.http.get<Order[]>(environment.apiUrl + "/customer/order");
   }
 
-  getAdminOrders(){
-    return this.http.get<Order[]>(environment.apiUrl+"/orders");
+  getAdminOrders() {
+    return this.http.get<Order[]>(environment.apiUrl + "/orders");
   }
 
-  updateOrders(id:String,status:string){
+  updateOrders(id: String, status: string) {
     //console.log(id,status);
-    return this.http.post(environment.apiUrl+"/orders/"+id,{
-      status:status
+    return this.http.post(environment.apiUrl + "/orders/" + id, {
+      status: status
     })
   }
 }

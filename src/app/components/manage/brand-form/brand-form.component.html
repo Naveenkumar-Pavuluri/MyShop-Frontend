@@ -1,22 +1,22 @@
-<div class="px-40 mt-10 flex justify-center">
-    <form class="w-96 shadow p-6">
+<div class="flex justify-center px-40 mt-10">
+    <form class="p-6 shadow w-96">
         @if(id){
-            <h4 class="text-xs">Update Brand</h4>
+        <h4 class="text-xs">Update Brand</h4>
         }@else{
-            <h4 class="text-xs">Add New Brand</h4>
+        <h4 class="text-xs">Add New Brand</h4>
         }
         <div class="flex flex-wrap">
             <mat-form-field class="w-full">
                 <mat-label>Name</mat-label>
-                <input matInput type="text" placeholder="Enter brand name" name="name" [(ngModel)]="name"/>
+                <input matInput type="text" placeholder="Enter brand name" name="name" [(ngModel)]="name" />
             </mat-form-field>
         </div>
         <div class="flex justify-center">
             @if(id){
-                <button mat-raised-button color="primary" (click)="update()" [disabled]="!name">Update</button>
+            <button mat-raised-button color="primary" (click)="update()" [disabled]="!name">Update</button>
             }
             @else{
-                <button mat-raised-button color="primary" (click)="add()" [disabled]="!name">Add</button>
+            <button mat-raised-button color="primary" (click)="add()" [disabled]="!name">Add</button>
             }
         </div>
     </form>

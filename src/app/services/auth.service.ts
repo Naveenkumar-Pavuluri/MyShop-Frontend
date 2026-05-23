@@ -10,7 +10,7 @@ export class AuthService {
   private isLoggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn);
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
 
-  constructor() {}
+  constructor() { }
 
   http = inject(HttpClient);
 

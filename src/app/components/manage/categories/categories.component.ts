@@ -22,7 +22,7 @@ export class CategoriesComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  id!:string;
+  id!: string;
 
   categoryService = inject(CategoryService);
 
@@ -30,7 +30,7 @@ export class CategoriesComponent {
     this.dataSource = new MatTableDataSource([] as any);
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.getServerData();
   }
 
@@ -54,8 +54,8 @@ export class CategoriesComponent {
     }
   }
 
-  delete(id:string){
-    this.categoryService.deleteCategoryById(id).subscribe((result)=>{
+  delete(id: string) {
+    this.categoryService.deleteCategoryById(id).subscribe((result) => {
       alert("Category Deleted.");
       this.getServerData();
     })

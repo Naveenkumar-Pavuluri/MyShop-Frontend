@@ -24,7 +24,7 @@ export class HomeComponent {
   cartService = inject(CartService);
   customOptions: OwlOptions = {
     loop: true,
-    margin: 10, 
+    margin: 10,
     nav: false,
     dots: true,
     responsive: {
@@ -35,10 +35,10 @@ export class HomeComponent {
         items: 2
       },
       768: {
-        items: 3 
+        items: 3
       },
       1024: {
-        items: 4 
+        items: 4
       }
     }
   };

@@ -12,8 +12,8 @@ import { ProductCardComponent } from '../product-card/product-card.component';
 })
 export class WishlistComponent {
   wishlistService = inject(WishlistService);
-  
-  ngOnInit(){
+
+  ngOnInit() {
     this.wishlistService.init();
   }
 }

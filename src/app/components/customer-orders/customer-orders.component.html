@@ -1,5 +1,5 @@
-<div class="container mx-auto p-6 max-w-3xl">
-    <h2 class="text-2xl font-bold mb-4">My Orders list</h2>
+<div class="container max-w-3xl p-6 mx-auto">
+    <h2 class="mb-4 text-2xl font-bold">My Orders list</h2>
     @for(order of orders; track $index){
     <div>
         <h6>OrderId : {{order._id}}</h6>
@@ -7,10 +7,10 @@
         <p>Order Status : {{order.status}}</p>
     </div>
     <div *ngFor="let item of order.items; let i = index"
-        class="flex items-center justify-between p-4 bg-white shadow-md rounded-lg mb-4">
+        class="flex items-center justify-between p-4 mb-4 bg-white rounded-lg shadow-md">
         <div class="flex items-center gap-4">
             <img [src]="item.product.images[0]" alt="{{ item.product.name }}"
-                class="w-16 h-16 rounded-lg object-cover" />
+                class="object-cover w-16 h-16 rounded-lg" />
             <div>
                 <h6>{{item.product.name}}</h6>
                 <p class="text-gray-500">₹{{sellingPrice(item.product.price,item.product.discount) * item.quantity}}
@@ -22,5 +22,5 @@
             <span class="font-medium">{{item.quantity}}</span>
         </div>
     </div>
-}
+    }
 </div>

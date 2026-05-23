@@ -7,25 +7,25 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class WishlistService {
-  http=inject(HttpClient);
-  wishlist:Product[]=[]
+  http = inject(HttpClient);
+  wishlist: Product[] = []
   constructor() { }
 
-  init(){
-    return this.getWishlist().subscribe((result)=>{
+  init() {
+    return this.getWishlist().subscribe((result) => {
       this.wishlist = result;
     })
   }
 
-  getWishlist(){
-    return this.http.get<Product[]>(environment.apiUrl+"/customer/wishlist");
+  getWishlist() {
+    return this.http.get<Product[]>(environment.apiUrl + "/customer/wishlist");
   }
 
-  addToWishlist(productId:string){
-    return this.http.post(environment.apiUrl+"/customer/wishlist/"+productId,{});
+  addToWishlist(productId: string) {
+    return this.http.post(environment.apiUrl + "/customer/wishlist/" + productId, {});
   }
 
-  removeFromWishlist(productId:string){
-    return this.http.delete(environment.apiUrl+"/customer/wishlist/"+productId);
+  removeFromWishlist(productId: string) {
+    return this.http.delete(environment.apiUrl + "/customer/wishlist/" + productId);
   }
 }

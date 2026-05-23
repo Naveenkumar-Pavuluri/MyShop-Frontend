@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 })
 export class BrandService {
 
-  
+
   http = inject(HttpClient);
   constructor() { }
   getBrand() {

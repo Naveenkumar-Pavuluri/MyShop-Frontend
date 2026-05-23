@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [MatInputModule,MatButtonModule,ReactiveFormsModule],
+  imports: [MatInputModule, MatButtonModule, ReactiveFormsModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
@@ -18,14 +18,14 @@ export class RegisterComponent {
   authService = inject(AuthService);
   router = inject(Router);
   registerForm = this.formsbuilder.group({
-    name:['',[Validators.required]],
-    email:['',[Validators.required, Validators.email]],
-    password:['',[Validators.minLength(5)]]
+    name: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.minLength(5)]]
   });
 
-  register(){
+  register() {
     let value = this.registerForm.value;
-    this.authService.register(value.name!,value.email!,value.password!).subscribe((result)=>{
+    this.authService.register(value.name!, value.email!, value.password!).subscribe((result) => {
       alert("Registration sucessful");
       this.router.navigateByUrl("/login");
     })

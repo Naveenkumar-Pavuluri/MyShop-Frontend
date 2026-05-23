@@ -1,7 +1,7 @@
-<div class="flex flex-col sm:flex-row px-4 py-2">
+<div class="flex flex-col px-4 py-2 sm:flex-row">
     <!-- Filters Section -->
-    <div class="w-full sm:w-3/12 bg-gray-100 p-4 rounded-lg">
-        <h6 class="text-lg font-semibold mb-2">Filters</h6>
+    <div class="w-full p-4 bg-gray-100 rounded-lg sm:w-3/12">
+        <h6 class="mb-2 text-lg font-semibold">Filters</h6>
         <div class="flex flex-col">
             <div class="w-full">
                 <mat-form-field class="w-full mb-4">
@@ -27,7 +27,7 @@
 
     <!-- Products Section -->
     <div class="flex-1 mt-4 sm:mt-0 sm:ml-4">
-        <div class="flex flex-col sm:flex-row justify-between items-center">
+        <div class="flex flex-col items-center justify-between sm:flex-row">
             <h6 class="text-lg font-semibold">Products</h6>
             <mat-form-field class="w-40">
                 <mat-label>Order By</mat-label>
@@ -39,7 +39,7 @@
         </div>
 
         <!-- Responsive Product Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+        <div class="grid grid-cols-1 gap-4 mt-4 sm:grid-cols-2 lg:grid-cols-3">
             @for(product of products; track $index){
             <app-product-card [product]="product"></app-product-card>
             }@empty{
@@ -48,7 +48,7 @@
         </div>
 
         <!-- Pagination Buttons -->
-        <div class="flex justify-center sm:justify-start gap-4 mt-6">
+        <div class="flex justify-center gap-4 mt-6 sm:justify-start">
             <button mat-raised-button color="primary" [disabled]="page==1" (click)="pageChange(page-1)">
                 Previous
             </button>

@@ -28,17 +28,17 @@ export class ProductListComponent {
   pageSize = 6;
   products: Product[] = [];
   route = inject(ActivatedRoute);
-  category:Category[] =[];
-  brands:Brand[]=[];
-  isNext=true;
+  category: Category[] = [];
+  brands: Brand[] = [];
+  isNext = true;
 
   ngOnInit() {
 
-    this.customerService.getCategories().subscribe((result:any)=>{
+    this.customerService.getCategories().subscribe((result: any) => {
       this.category = result;
     });
 
-    this.customerService.getBrands().subscribe((result:any)=>{
+    this.customerService.getBrands().subscribe((result: any) => {
       this.brands = result;
     })
 
@@ -50,23 +50,23 @@ export class ProductListComponent {
   }
 
   getAllProducts() {
-    setTimeout(()=>{
+    setTimeout(() => {
       this.customerService.getProducts(this.searchTerm, this.categoryId, this.page, this.pageSize, this.sortBy, this.sortOrder, this.brandId).subscribe((result) => {
         this.products = result;
-        if(result.length < this.pageSize ){
+        if (result.length < this.pageSize) {
           this.isNext = false;
         }
       })
-    },500);
+    }, 500);
   };
 
-  orderChange(event:any){
+  orderChange(event: any) {
     this.sortBy = 'price';
     this.sortOrder = event;
     this.getAllProducts()
   }
 
-  pageChange(page:number){
+  pageChange(page: number) {
     this.page = page;
     this.isNext = true;
   }

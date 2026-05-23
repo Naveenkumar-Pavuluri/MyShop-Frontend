@@ -21,100 +21,100 @@ import { OrdersComponent } from './components/manage/orders/orders.component';
 
 export const routes: Routes = [
     {
-        path:"",
-        component:HomeComponent,
-        canActivate:[authGaurd]
+        path: "",
+        component: HomeComponent,
+        canActivate: [authGaurd]
     },
     {
-        path:"admin",
-        component:AdminDashboardComponent,
-        canActivate:[adminGuard]
+        path: "admin",
+        component: AdminDashboardComponent,
+        canActivate: [adminGuard]
     },
     {
-        path:"admin/categories",
-        component:CategoriesComponent,
-        canActivate:[adminGuard]
+        path: "admin/categories",
+        component: CategoriesComponent,
+        canActivate: [adminGuard]
     },
     {
-        path:"admin/categories/add",
-        component:CategoryFormComponent,
-        canActivate:[adminGuard]
+        path: "admin/categories/add",
+        component: CategoryFormComponent,
+        canActivate: [adminGuard]
     },
     {
-        path:"admin/categories/:id",
-        component:CategoryFormComponent,
-        canActivate:[adminGuard]
+        path: "admin/categories/:id",
+        component: CategoryFormComponent,
+        canActivate: [adminGuard]
     },
     {
-        path:"admin/brands",
-        component:BrandsComponent,
-        canActivate:[adminGuard]
+        path: "admin/brands",
+        component: BrandsComponent,
+        canActivate: [adminGuard]
     },
     {
-        path:"admin/brands/add",
-        component:BrandFormComponent,
-        canActivate:[adminGuard]
+        path: "admin/brands/add",
+        component: BrandFormComponent,
+        canActivate: [adminGuard]
     },
     {
-        path:"admin/brands/:id",
-        component:BrandFormComponent,
-        canActivate:[adminGuard]
+        path: "admin/brands/:id",
+        component: BrandFormComponent,
+        canActivate: [adminGuard]
     },
     {
-        path:"admin/products",
-        component:ProductComponent,
-        canActivate:[adminGuard]
+        path: "admin/products",
+        component: ProductComponent,
+        canActivate: [adminGuard]
     },
     {
-        path:"admin/products/add",
-        component:ProductFormComponent,
-        canActivate:[adminGuard]
+        path: "admin/products/add",
+        component: ProductFormComponent,
+        canActivate: [adminGuard]
     },
     {
-        path:"admin/products/:id",
-        component:ProductFormComponent,
-        canActivate:[adminGuard]
+        path: "admin/products/:id",
+        component: ProductFormComponent,
+        canActivate: [adminGuard]
     },
     {
-        path:"admin/orders",
-        component:OrdersComponent,
-        canActivate:[adminGuard]
+        path: "admin/orders",
+        component: OrdersComponent,
+        canActivate: [adminGuard]
     },
     {
-        path:"products",
-        component:ProductListComponent,
-        canActivate:[authGaurd]
+        path: "products",
+        component: ProductListComponent,
+        canActivate: [authGaurd]
     },
     {
-        path:"wishlist",
-        component:WishlistComponent,
-        canActivate:[authGaurd]
+        path: "wishlist",
+        component: WishlistComponent,
+        canActivate: [authGaurd]
     },
     {
-        path:"cart",
-        component:ShoppingCartComponent,
-        canActivate:[authGaurd]
+        path: "cart",
+        component: ShoppingCartComponent,
+        canActivate: [authGaurd]
     },
     {
-        path:"orders",
-        component:CustomerOrdersComponent,
-        canActivate:[authGaurd]
+        path: "orders",
+        component: CustomerOrdersComponent,
+        canActivate: [authGaurd]
     },
     {
-        path:"products/:id",
-        component:ProductDetailComponent,
-        canActivate:[authGaurd]
+        path: "products/:id",
+        component: ProductDetailComponent,
+        canActivate: [authGaurd]
     },
     {
-        path:"register",
-        component:RegisterComponent
+        path: "register",
+        component: RegisterComponent
     },
     {
-        path:"login",
-        component:LoginComponent
+        path: "login",
+        component: LoginComponent
     },
     {
-        path:"profile",
-        component:CustomerProfileComponent
+        path: "profile",
+        component: CustomerProfileComponent
     }
 ];

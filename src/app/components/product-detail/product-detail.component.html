@@ -1,53 +1,53 @@
-<div class="max-w-6xl mx-auto bg-white p-4 sm:p-6 rounded-lg shadow-lg">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="max-w-6xl p-4 mx-auto bg-white rounded-lg shadow-lg sm:p-6">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
         <div class="flex justify-center">
-            <img [src]="mainImage" class="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-auto object-contain">
+            <img [src]="mainImage" class="object-contain w-full h-auto max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
         </div>
 
         <div *ngIf="product">
-            <h2 class="text-lg sm:text-xl md:text-2xl font-bold">{{product.name}}</h2>
-            <p class="text-sm sm:text-base text-gray-600 mt-2">{{product.shortDescription}}</p>
+            <h2 class="text-lg font-bold sm:text-xl md:text-2xl">{{product.name}}</h2>
+            <p class="mt-2 text-sm text-gray-600 sm:text-base">{{product.shortDescription}}</p>
 
-            <div class="flex flex-wrap gap-2 sm:gap-4 mt-2">
-                <span class="text-gray-400 text-sm sm:text-base"><s>₹{{product.price}}</s></span>
-                <span class="text-orange-400 text-sm sm:text-base">{{product.discount}}% off</span>
-                <span class="text-green-500 font-bold text-lg sm:text-xl">₹{{sellingPrice}}</span>
+            <div class="flex flex-wrap gap-2 mt-2 sm:gap-4">
+                <span class="text-sm text-gray-400 sm:text-base"><s>₹{{product.price}}</s></span>
+                <span class="text-sm text-orange-400 sm:text-base">{{product.discount}}% off</span>
+                <span class="text-lg font-bold text-green-500 sm:text-xl">₹{{sellingPrice}}</span>
             </div>
 
             <div class="flex gap-4 mt-4">
                 <button mat-fab color="warn" class="w-10 h-10 sm:w-12 sm:h-12" (click)="addToWishlist(product)">
                     @if(isInWishlist(product)){
-                        <mat-icon class="text-red-500">favorite</mat-icon>
+                    <mat-icon class="text-red-500">favorite</mat-icon>
                     }@else{
-                        <mat-icon class="text-red-500">favorite_border</mat-icon>
+                    <mat-icon class="text-red-500">favorite_border</mat-icon>
                     }
                 </button>
                 <button mat-fab color="primary" class="w-10 h-10 sm:w-12 sm:h-12" (click)="addToCart(product)">
                     @if(isProductInCart(product._id!)){
-                        <mat-icon>remove_shopping_cart</mat-icon>
+                    <mat-icon>remove_shopping_cart</mat-icon>
                     }@else{
-                        <mat-icon>add_shopping_cart</mat-icon>
+                    <mat-icon>add_shopping_cart</mat-icon>
                     }
                 </button>
             </div>
 
-            <h3 class="mt-6 text-lg sm:text-xl font-semibold">Product Details</h3>
+            <h3 class="mt-6 text-lg font-semibold sm:text-xl">Product Details</h3>
             <p class="text-sm sm:text-base">{{product.description}}</p>
         </div>
     </div>
 
     <div class="mt-8">
-        <h3 class="text-xl sm:text-2xl font-semibold">Customer Reviews</h3>
-        <div class="mt-4 border-t pt-4">
+        <h3 class="text-xl font-semibold sm:text-2xl">Customer Reviews</h3>
+        <div class="pt-4 mt-4 border-t">
             <div class="mb-4">
-                <p class="font-bold text-sm sm:text-base">John Doe</p>
-                <p class="text-yellow-500 text-sm sm:text-base">★★★★★</p>
-                <p class="text-gray-600 text-xs sm:text-sm">Great product! Highly recommend.</p>
+                <p class="text-sm font-bold sm:text-base">John Doe</p>
+                <p class="text-sm text-yellow-500 sm:text-base">★★★★★</p>
+                <p class="text-xs text-gray-600 sm:text-sm">Great product! Highly recommend.</p>
             </div>
             <div>
-                <p class="font-bold text-sm sm:text-base">Jane Smith</p>
-                <p class="text-yellow-500 text-sm sm:text-base">★★★★☆</p>
-                <p class="text-gray-600 text-xs sm:text-sm">Good quality but a bit expensive.</p>
+                <p class="text-sm font-bold sm:text-base">Jane Smith</p>
+                <p class="text-sm text-yellow-500 sm:text-base">★★★★☆</p>
+                <p class="text-xs text-gray-600 sm:text-sm">Good quality but a bit expensive.</p>
             </div>
         </div>
     </div>

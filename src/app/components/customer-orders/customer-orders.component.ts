@@ -6,21 +6,21 @@ import { CommonModule, DatePipe } from '@angular/common';
 @Component({
   selector: 'app-customer-orders',
   standalone: true,
-  imports: [CommonModule,DatePipe],
+  imports: [CommonModule, DatePipe],
   templateUrl: './customer-orders.component.html',
   styleUrl: './customer-orders.component.scss'
 })
 export class CustomerOrdersComponent {
-  orders:Order[]=[];
+  orders: Order[] = [];
   orderService = inject(OrderService);
-  ngOnInit(){
-    this.orderService.getOrders().subscribe((result)=>{
+  ngOnInit() {
+    this.orderService.getOrders().subscribe((result) => {
       this.orders = result;
     })
   }
 
-  sellingPrice(price:number,discount:number){
-    return Math.floor(Math.round(price - price * (discount/100))/100)*100;
+  sellingPrice(price: number, discount: number) {
+    return Math.floor(Math.round(price - price * (discount / 100)) / 100) * 100;
   }
 
 }

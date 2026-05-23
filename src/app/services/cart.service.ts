@@ -8,26 +8,26 @@ import { Cart } from '../types/cart';
   providedIn: 'root'
 })
 export class CartService {
-  http= inject(HttpClient);
-  items:Cart[]=[];
+  http = inject(HttpClient);
+  items: Cart[] = [];
 
-  init(){
-    this.getCartItems().subscribe((result)=>{
+  init() {
+    this.getCartItems().subscribe((result) => {
       this.items = result;
     })
   }
 
   constructor() { }
 
-  getCartItems(){
-    return this.http.get<Cart[]>(environment.apiUrl+"/customer/cart");
+  getCartItems() {
+    return this.http.get<Cart[]>(environment.apiUrl + "/customer/cart");
   }
 
-  addToCart(id:string,quantity:number){
-    return this.http.post(environment.apiUrl+"/customer/cart/"+id,{quantity:quantity})
+  addToCart(id: string, quantity: number) {
+    return this.http.post(environment.apiUrl + "/customer/cart/" + id, { quantity: quantity })
   }
 
-  removeFromCart(id:string){
-    return this.http.delete(environment.apiUrl+"/customer/cart/"+id)
+  removeFromCart(id: string) {
+    return this.http.delete(environment.apiUrl + "/customer/cart/" + id)
   }
 }
